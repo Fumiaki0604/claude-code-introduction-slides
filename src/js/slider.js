@@ -1,5 +1,27 @@
 // Simplified Claude Code Slider
-jQuery(document).ready(function ($) {
+console.log('Slider script loading...');
+
+// Fallback if jQuery is not loaded
+if (typeof jQuery === 'undefined') {
+    console.error('jQuery is not loaded!');
+    // Load jQuery manually
+    const script = document.createElement('script');
+    script.src = 'https://code.jquery.com/jquery-3.6.0.min.js';
+    script.onload = function() {
+        console.log('jQuery loaded manually');
+        initializeSlider();
+    };
+    document.head.appendChild(script);
+} else {
+    console.log('jQuery is loaded');
+    jQuery(document).ready(function ($) {
+        initializeSlider();
+    });
+}
+
+function initializeSlider() {
+    console.log('Initializing slider...');
+    const $ = jQuery;
     
     let currentSlide = 0;
     const totalSlides = 7;
@@ -224,4 +246,9 @@ jQuery(document).ready(function ($) {
             nextSlide();
         }, 1000);
     };
-});
+    
+    // Global access to slider functions
+    window.sliderNext = nextSlide;
+    window.sliderPrev = prevSlide;
+    window.sliderGoTo = goToSlide;
+}
