@@ -1,277 +1,227 @@
-// Claude Code Slide Presentation
-// Based on reference slider functionality
-
+// Simplified Claude Code Slider
 jQuery(document).ready(function ($) {
     
-    startSlider($('#slider'), 50); // Slide container ID, SlideShow interval (50ms for smooth progress)
+    let currentSlide = 0;
+    const totalSlides = 7;
+    const slideWidth = 100; // 100vw
+    let autoSlideInterval;
+    let isPaused = false;
+    let progressInterval;
+    let progressPercent = 0;
     
-    function startSlider(obj, timer) {
+    // Initialize slider
+    function initSlider() {
+        console.log('Initializing slider...');
         
-        var obj, timer;
-        var id = "#" + obj.attr("id");
-        var slideCount = obj.find('ul li').length;
-        var slideWidth = obj.attr("data-width");
-        var sliderUlWidth = (slideCount + 1) * slideWidth;
-        var time = 8; // seconds per slide
-        var $bar,
-            isPause,
-            tick,
-            percentTime;
+        // Set initial position
+        $('#slider ul').css('transform', 'translateX(0vw)');
         
-        isPause = false; // false for auto slideshow
+        // Start auto-slide
+        startAutoSlide();
         
-        $bar = obj.find('.progress .bar');
+        // Start progress bar
+        startProgressBar();
         
-        function startProgressbar() {
-            resetProgressbar();
-            percentTime = 0;
-            tick = setInterval(interval, timer);
-        }
+        // Setup event listeners
+        setupEventListeners();
         
-        function interval() {
-            if (isPause === false) {
-                percentTime += 1 / (time * 20); // 20 intervals per second
-                $bar.css({
-                    width: percentTime * 100 + "%"
-                });
-                if (percentTime >= 1) {
-                    moveRight();
-                    startProgressbar();
-                }
-            }
-        }
+        console.log('Slider initialized successfully');
+    }
+    
+    function goToSlide(slideIndex) {
+        console.log('Going to slide:', slideIndex);
         
-        function resetProgressbar() {
-            $bar.css({
-                width: 0 + '%'
-            });
-            clearInterval(tick);
-        }
+        currentSlide = slideIndex;
+        const translateX = -slideIndex * slideWidth;
         
-        function startslide() {
-            $(id + ' ul li:last-child').prependTo(id + ' ul');
-            obj.find('ul').css({ 
-                width: sliderUlWidth + 'vw', 
-                marginLeft: -slideWidth + 'vw' 
-            });
-            
-            obj.find('ul li:last-child').appendTo(id + ' ul');
-        }
-        
-        if (slideCount > 1) {
-            startslide();
-            startProgressbar();
-        } else { 
-            // Hide navigation buttons for 1 slide only
-            $(id + ' button.control_prev').hide();
-            $(id + ' button.control_next').hide();
-        }
-        
-        function moveLeft() {
-            $(id + ' ul').css({ 
-                transition: "1s cubic-bezier(0.4, 0, 0.2, 1)",
-                transform: "translateX(" + slideWidth + "vw)" 
-            });
-            
-            setTimeout(function() {
-                $(id + ' ul li:last-child').prependTo(id + ' ul');
-                $(id + ' ul').css({ 
-                    transition: "none",
-                    transform: "translateX(" + 0 + "vw)" 
-                });
-                
-                // Update active slide
-                var $currentActive = $('li.actslide');
-                $currentActive.removeClass('actslide');
-                var $prevSlide = $currentActive.prev();
-                if ($prevSlide.length === 0) {
-                    $prevSlide = $(id + ' ul li:last-child');
-                }
-                $prevSlide.addClass('actslide');
-                
-            }, 1000);
-        }
-        
-        function moveRight2() { 
-            // Fix for only 2 slides
-            $(id + ' ul li:first-child').appendTo(id + ' ul');
-            
-            $(id + ' ul').css({ 
-                transition: "none",
-                transform: "translateX(100vw)" 
-            });
-            
-            setTimeout(function() {
-                $(id + ' ul').css({ 
-                    transition: "1s cubic-bezier(0.4, 0, 0.2, 1)",
-                    transform: "translateX(0vw)" 
-                });
-                
-                setTimeout(function() {
-                    $(id + ' ul').css({ 
-                        transition: "none",
-                        transform: "translateX(0vw)" 
-                    });
-                    
-                    // Update active slide
-                    var $currentActive = $('li.actslide');
-                    $currentActive.removeClass('actslide');
-                    var $nextSlide = $currentActive.next();
-                    if ($nextSlide.length === 0) {
-                        $nextSlide = $(id + ' ul li:first-child');
-                    }
-                    $nextSlide.addClass('actslide');
-                    
-                }, 1000);
-            }, 100);
-        }
-        
-        function moveRight() {
-            if (slideCount > 2) {
-                $(id + ' ul').css({ 
-                    transition: "1s cubic-bezier(0.4, 0, 0.2, 1)",
-                    transform: "translateX(" + (-1) * slideWidth + "vw)" 
-                });
-                
-                setTimeout(function() {
-                    $(id + ' ul li:first-child').appendTo(id + ' ul');
-                    $(id + ' ul').css({ 
-                        transition: "none",
-                        transform: "translateX(" + 0 + "vw)" 
-                    });
-                    
-                    // Update active slide
-                    var $currentActive = $('li.actslide');
-                    $currentActive.removeClass('actslide');
-                    var $nextSlide = $currentActive.next();
-                    if ($nextSlide.length === 0) {
-                        $nextSlide = $(id + ' ul li:first-child');
-                    }
-                    $nextSlide.addClass('actslide');
-                    
-                }, 1000);
-            } else {
-                moveRight2();
-            }
-        }
-        
-        // Navigation button events
-        $(id + ' button.control_prev').click(function() {
-            moveLeft();
-            startProgressbar();
+        $('#slider ul').css({
+            'transform': `translateX(${translateX}vw)`,
+            'transition': 'transform 1s cubic-bezier(0.4, 0, 0.2, 1)'
         });
         
-        $(id + ' button.control_next').click(function() {
-            moveRight();
-            startProgressbar();
+        // Update active slide class
+        $('#slider ul li').removeClass('actslide');
+        $('#slider ul li').eq(slideIndex).addClass('actslide');
+        
+        // Reset progress bar
+        resetProgressBar();
+        startProgressBar();
+    }
+    
+    function nextSlide() {
+        const nextIndex = (currentSlide + 1) % totalSlides;
+        goToSlide(nextIndex);
+    }
+    
+    function prevSlide() {
+        const prevIndex = (currentSlide - 1 + totalSlides) % totalSlides;
+        goToSlide(prevIndex);
+    }
+    
+    function startAutoSlide() {
+        if (autoSlideInterval) {
+            clearInterval(autoSlideInterval);
+        }
+        
+        autoSlideInterval = setInterval(() => {
+            if (!isPaused) {
+                nextSlide();
+            }
+        }, 8000); // 8 seconds
+    }
+    
+    function startProgressBar() {
+        if (progressInterval) {
+            clearInterval(progressInterval);
+        }
+        
+        progressPercent = 0;
+        
+        progressInterval = setInterval(() => {
+            if (!isPaused) {
+                progressPercent += 1.25; // 100% in 8 seconds (100/80 = 1.25)
+                $('.progress .bar').css('width', progressPercent + '%');
+                
+                if (progressPercent >= 100) {
+                    clearInterval(progressInterval);
+                }
+            }
+        }, 100); // Update every 100ms
+    }
+    
+    function resetProgressBar() {
+        if (progressInterval) {
+            clearInterval(progressInterval);
+        }
+        progressPercent = 0;
+        $('.progress .bar').css('width', '0%');
+    }
+    
+    function pauseSlider() {
+        isPaused = true;
+        $('.progress').addClass('paused');
+        console.log('Slider paused');
+    }
+    
+    function resumeSlider() {
+        isPaused = false;
+        $('.progress').removeClass('paused');
+        console.log('Slider resumed');
+    }
+    
+    function setupEventListeners() {
+        // Navigation buttons
+        $('.control_next').on('click', function() {
+            console.log('Next button clicked');
+            nextSlide();
+        });
+        
+        $('.control_prev').on('click', function() {
+            console.log('Previous button clicked');
+            prevSlide();
         });
         
         // Progress bar click to pause/resume
-        $(id + ' .progress').click(function() {
-            if (isPause === false) {
-                isPause = true;
-                $(this).addClass('paused');
+        $('.progress').on('click', function() {
+            if (isPaused) {
+                resumeSlider();
             } else {
-                isPause = false;
-                $(this).removeClass('paused');
+                pauseSlider();
             }
         });
         
         // Keyboard navigation
-        $(document).keydown(function(e) {
+        $(document).on('keydown', function(e) {
             switch(e.which) {
                 case 37: // left arrow
                 case 38: // up arrow
                     e.preventDefault();
-                    moveLeft();
-                    startProgressbar();
+                    prevSlide();
                     break;
                     
                 case 39: // right arrow
                 case 40: // down arrow
                 case 32: // spacebar
                     e.preventDefault();
-                    moveRight();
-                    startProgressbar();
+                    nextSlide();
                     break;
                     
                 case 27: // escape
                     e.preventDefault();
-                    if (isPause === false) {
-                        isPause = true;
-                        $(id + ' .progress').addClass('paused');
+                    if (isPaused) {
+                        resumeSlider();
                     } else {
-                        isPause = false;
-                        $(id + ' .progress').removeClass('paused');
+                        pauseSlider();
                     }
                     break;
-                    
-                default: return;
             }
         });
         
         // Touch/swipe navigation
-        var startX, startY, distX, distY, threshold = 100, restraint = 100, allowedTime = 300, elapsedTime, startTime;
+        let startX = 0;
+        let startY = 0;
+        let threshold = 50;
         
-        $(id).on('touchstart', function(e) {
-            var touchobj = e.originalEvent.changedTouches[0];
-            startX = touchobj.pageX;
-            startY = touchobj.pageY;
-            startTime = new Date().getTime();
-            e.preventDefault();
+        $('#slider').on('touchstart', function(e) {
+            startX = e.originalEvent.touches[0].clientX;
+            startY = e.originalEvent.touches[0].clientY;
         });
         
-        $(id).on('touchend', function(e) {
-            var touchobj = e.originalEvent.changedTouches[0];
-            distX = touchobj.pageX - startX;
-            distY = touchobj.pageY - startY;
-            elapsedTime = new Date().getTime() - startTime;
+        $('#slider').on('touchend', function(e) {
+            const endX = e.originalEvent.changedTouches[0].clientX;
+            const endY = e.originalEvent.changedTouches[0].clientY;
             
-            if (elapsedTime <= allowedTime) {
-                if (Math.abs(distX) >= threshold && Math.abs(distY) <= restraint) {
-                    if (distX > 0) {
-                        // Swipe right - go to previous slide
-                        moveLeft();
-                        startProgressbar();
-                    } else {
-                        // Swipe left - go to next slide
-                        moveRight();
-                        startProgressbar();
-                    }
+            const deltaX = endX - startX;
+            const deltaY = endY - startY;
+            
+            // Only process horizontal swipes
+            if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > threshold) {
+                if (deltaX > 0) {
+                    // Swipe right - go to previous slide
+                    prevSlide();
+                } else {
+                    // Swipe left - go to next slide
+                    nextSlide();
                 }
             }
-            e.preventDefault();
         });
         
-        // Auto-pause on hover
-        $(id).hover(
-            function() {
-                if (!isPause) {
-                    isPause = true;
-                    $(id + ' .progress').addClass('paused');
-                }
-            },
-            function() {
-                if (isPause) {
-                    isPause = false;
-                    $(id + ' .progress').removeClass('paused');
-                }
-            }
-        );
+        // Pause on hover
+        $('#slider').on('mouseenter', function() {
+            pauseSlider();
+        });
+        
+        $('#slider').on('mouseleave', function() {
+            resumeSlider();
+        });
         
         // Visibility API - pause when tab is not active
-        document.addEventListener('visibilitychange', function() {
+        $(document).on('visibilitychange', function() {
             if (document.hidden) {
-                if (!isPause) {
-                    isPause = true;
-                    $(id + ' .progress').addClass('paused');
-                }
+                pauseSlider();
             } else {
-                if (isPause) {
-                    isPause = false;
-                    $(id + ' .progress').removeClass('paused');
-                }
+                resumeSlider();
             }
         });
     }
+    
+    // Initialize the slider
+    initSlider();
+    
+    // Debug: Add click handlers to test
+    console.log('Slider script loaded. Total slides:', totalSlides);
+    
+    // Test function (can be called from browser console)
+    window.testSlider = function() {
+        console.log('Testing slider...');
+        console.log('Current slide:', currentSlide);
+        console.log('Total slides:', totalSlides);
+        console.log('Is paused:', isPaused);
+        
+        // Test navigation
+        setTimeout(() => {
+            console.log('Testing next slide...');
+            nextSlide();
+        }, 1000);
+    };
 });

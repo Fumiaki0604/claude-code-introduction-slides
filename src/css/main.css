@@ -31,15 +31,17 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
-    width: 99999px;
+    width: 700vw; /* 7 slides × 100vw */
     overflow: hidden;
     list-style: none;
+    display: flex;
+    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #slider ul li {
     position: relative;
     display: block;
-    float: left;
+    flex: 0 0 100vw; /* Flex item that takes full viewport width */
     margin: 0;
     padding: 0;
     width: 100vw;
@@ -351,9 +353,9 @@ button.control_next {
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
 }
 
-/* Slide Transitions */
+/* Hide inactive slides initially */
 #slider ul {
-    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(0);
 }
 
 /* Active Slide Indicator */
