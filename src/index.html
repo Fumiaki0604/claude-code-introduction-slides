@@ -7,7 +7,6 @@
     <title>Claude Code Introduction Slides</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         /* Critical CSS to ensure slider works */
         body {
@@ -35,18 +34,22 @@
             overflow: hidden !important;
             list-style: none !important;
             display: flex !important;
+            flex-direction: row !important;
             transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            transform: translateX(0vw) !important;
         }
         
         #slider ul li {
             position: relative !important;
-            display: block !important;
+            display: flex !important;
             flex: 0 0 100vw !important;
             margin: 0 !important;
             padding: 0 !important;
             width: 100vw !important;
             height: 100vh !important;
             text-align: center !important;
+            align-items: center !important;
+            justify-content: center !important;
         }
         
         #slider ul li .slide {

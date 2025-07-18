@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100vh;
+        }
+        
+        #slider {
+            position: relative;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        #slider ul {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 300vw; /* 3 slides */
+            overflow: hidden;
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            transition: transform 1s ease-in-out;
+            transform: translateX(0vw);
+        }
+        
+        #slider ul li {
+            position: relative;
+            display: flex;
+            flex: 0 0 100vw;
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .slide {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .slide1 { background: #ff6b6b; }
+        .slide2 { background: #4ecdc4; }
+        .slide3 { background: #45b7d1; }
+        
+        .control_next, .control_prev {
+            position: absolute;
+            top: 50%;
+            z-index: 10;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #333;
+        }
+        
+        .control_prev { left: 2rem; }
+        .control_next { right: 2rem; }
+    </style>
+</head>
+<body>
+    <div class="slider" id="slider">
+        <button class="control_next">&rarr;</button>
+        <button class="control_prev">&larr;</button>
+        <ul>
+            <li class="actslide">
+                <div class="slide slide1">Slide 1</div>
+            </li>
+            <li>
+                <div class="slide slide2">Slide 2</div>
+            </li>
+            <li>
+                <div class="slide slide3">Slide 3</div>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        console.log('Loading test slider...');
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            let currentSlide = 0;
+            const totalSlides = 3;
+            
+            const slider = document.getElementById('slider');
+            const sliderUl = slider.querySelector('ul');
+            const nextBtn = slider.querySelector('.control_next');
+            const prevBtn = slider.querySelector('.control_prev');
+            
+            console.log('Elements found:', {
+                slider: !!slider,
+                sliderUl: !!sliderUl,
+                nextBtn: !!nextBtn,
+                prevBtn: !!prevBtn
+            });
+            
+            function goToSlide(slideIndex) {
+                console.log('Going to slide:', slideIndex);
+                
+                if (slideIndex < 0 || slideIndex >= totalSlides) {
+                    console.log('Invalid slide index:', slideIndex);
+                    return;
+                }
+                
+                currentSlide = slideIndex;
+                const translateX = -slideIndex * 100;
+                
+                console.log('Setting transform to:', `translateX(${translateX}vw)`);
+                sliderUl.style.transform = `translateX(${translateX}vw)`;
+                
+                console.log('Current transform:', sliderUl.style.transform);
+            }
+            
+            function nextSlide() {
+                const nextIndex = (currentSlide + 1) % totalSlides;
+                goToSlide(nextIndex);
+            }
+            
+            function prevSlide() {
+                const prevIndex = (currentSlide - 1 + totalSlides) % totalSlides;
+                goToSlide(prevIndex);
+            }
+            
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+            
+            // Test auto-slide
+            setInterval(nextSlide, 3000);
+            
+            console.log('Test slider initialized');
+        });
+    </script>
+</body>
+</html>
