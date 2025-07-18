@@ -1,0 +1,13 @@
+{
+  "name": "claude-code-introduction-slides",
+  "version": "1.0.0",
+  "description": "Claude Code introduction slides project template",
+  "main": "src/index.html",
+  "scripts": {
+    "build": "echo 'No build required for static site'",
+    "start": "echo 'Static site - no start script needed'"
+  },
+  "keywords": ["claude-code", "slides", "presentation", "static"],
+  "author": "",
+  "license": "MIT"
+}
