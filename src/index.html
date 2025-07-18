@@ -6,210 +6,208 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Claude Code Introduction Slides</title>
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/theme.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <div class="slide-container">
-        <iframe id="slide-frame" src="slides/01-introduction.html" width="100%" height="100%" frameborder="0"></iframe>
+    <div class="slider" id="slider" data-width="100">
+        <button class="control_next">&rarr;</button>
+        <button class="control_prev">&larr;</button>
+        <ul>
+            <li class="actslide">
+                <div class="slide" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
+                    <div class="shadow">
+                        <div class="teaser">
+                            <h3>Claude Code Introduction</h3>
+                            <h2>イントロダクション</h2>
+                            <p>AI-Powered Development Assistant</p>
+                            <div class="features">
+                                <ul>
+                                    <li>コード生成とリファクタリング</li>
+                                    <li>プロジェクト管理の自動化</li>
+                                    <li>デバッグとテストの支援</li>
+                                    <li>ドキュメント作成</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="slide" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)">
+                    <div class="shadow">
+                        <div class="teaser">
+                            <h3>Claude Code Introduction</h3>
+                            <h2>準備</h2>
+                            <p>Before Getting Started</p>
+                            <div class="content">
+                                <h4>必要なもの：</h4>
+                                <ul>
+                                    <li>Anthropic アカウントの作成</li>
+                                    <li>Node.js のインストール (v16以上)</li>
+                                    <li>Git のインストール</li>
+                                    <li>コードエディター (VS Code 推奨)</li>
+                                </ul>
+                                <h4>推奨環境：</h4>
+                                <ul>
+                                    <li>macOS / Linux / Windows (WSL2)</li>
+                                    <li>ターミナルアクセス</li>
+                                    <li>インターネット接続</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="slide" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%)">
+                    <div class="shadow">
+                        <div class="teaser">
+                            <h3>Claude Code Introduction</h3>
+                            <h2>インストール</h2>
+                            <p>Installation</p>
+                            <div class="content">
+                                <div class="code-block">
+                                    <pre><code># グローバルインストール
+npm install -g @anthropic-ai/claude-code
+
+# バージョン確認
+claude-code --version</code></pre>
+                                </div>
+                                <div class="code-block">
+                                    <pre><code># ワンラインインストール
+curl -fsSL https://claude.ai/install.sh | sh
+
+# パスの設定
+export PATH="$HOME/.claude-code/bin:$PATH"</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="slide" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)">
+                    <div class="shadow">
+                        <div class="teaser">
+                            <h3>Claude Code Introduction</h3>
+                            <h2>基本的な使い方</h2>
+                            <p>Basic Usage</p>
+                            <div class="content">
+                                <div class="code-block">
+                                    <pre><code># Claude Code を起動
+claude-code
+
+# プロジェクトで初期化
+claude-code init
+
+# ヘルプを表示
+claude-code --help</code></pre>
+                                </div>
+                                <h4>主な機能：</h4>
+                                <ul>
+                                    <li>ファイル操作と編集</li>
+                                    <li>Git 操作の自動化</li>
+                                    <li>コードレビューとリファクタリング</li>
+                                    <li>テストの生成と実行</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="slide" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)">
+                    <div class="shadow">
+                        <div class="teaser">
+                            <h3>Claude Code Introduction</h3>
+                            <h2>実例</h2>
+                            <p>Examples</p>
+                            <div class="content">
+                                <h4>1. ファイル操作の自動化</h4>
+                                <div class="code-block">
+                                    <pre><code># ファイル作成と編集
+"新しいReactコンポーネントを作成して"
+
+# ファイル構造の理解
+"srcディレクトリの構造を説明して"</code></pre>
+                                </div>
+                                <h4>2. 開発タスク</h4>
+                                <ul>
+                                    <li>コード品質の改善提案</li>
+                                    <li>パフォーマンスの最適化</li>
+                                    <li>ユニットテストの自動生成</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="slide" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)">
+                    <div class="shadow">
+                        <div class="teaser">
+                            <h3>Claude Code Introduction</h3>
+                            <h2>トラブルシューティング</h2>
+                            <p>Troubleshooting</p>
+                            <div class="content">
+                                <h4>よくある問題と解決策：</h4>
+                                <div class="problem-list">
+                                    <div class="problem-item">
+                                        <h5>1. 認証エラー</h5>
+                                        <ul>
+                                            <li>APIキーの確認</li>
+                                            <li>アカウントの再ログイン</li>
+                                        </ul>
+                                    </div>
+                                    <div class="problem-item">
+                                        <h5>2. パフォーマンスの問題</h5>
+                                        <ul>
+                                            <li>キャッシュのクリア</li>
+                                            <li>ファイルサイズの最適化</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="slide" style="background: linear-gradient(135deg, #a8e6cf 0%, #dcedc8 100%)">
+                    <div class="shadow">
+                        <div class="teaser">
+                            <h3>Claude Code Introduction</h3>
+                            <h2>次のステップ</h2>
+                            <p>Next Steps</p>
+                            <div class="content">
+                                <h4>1. 高度な機能の探索</h4>
+                                <ul>
+                                    <li>カスタムコマンドの作成</li>
+                                    <li>API連携の活用</li>
+                                    <li>プラグインシステムの利用</li>
+                                </ul>
+                                <h4>2. チーム開発での活用</h4>
+                                <ul>
+                                    <li>コードレビューの自動化</li>
+                                    <li>チーム標準の統一</li>
+                                    <li>CI/CDとの連携</li>
+                                </ul>
+                                <div class="final-message">
+                                    <h4>お疲れさまでした！</h4>
+                                    <p>Claude Codeで効率的な開発をお楽しみください。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="progress">
+            <div class="bar"></div>
+        </div>
     </div>
 
-    <nav class="slide-navigation">
-        <button id="prev-btn" class="nav-btn">← Previous</button>
-        <span id="slide-counter">1 / 7</span>
-        <button id="next-btn" class="nav-btn">Next →</button>
-    </nav>
-
-    <div class="slide-indicators">
-        <span class="indicator active" data-slide="1"></span>
-        <span class="indicator" data-slide="2"></span>
-        <span class="indicator" data-slide="3"></span>
-        <span class="indicator" data-slide="4"></span>
-        <span class="indicator" data-slide="5"></span>
-        <span class="indicator" data-slide="6"></span>
-        <span class="indicator" data-slide="7"></span>
-    </div>
-
-    <div class="progress-bar">
-        <div class="progress-fill" style="width: 14.28%"></div>
-    </div>
-
-    <script>
-        class SlidePresentation {
-            constructor() {
-                this.currentSlide = 1;
-                this.totalSlides = 7;
-                this.slideFiles = [
-                    'slides/01-introduction.html',
-                    'slides/02-preparation.html',
-                    'slides/03-installation.html',
-                    'slides/04-basic-usage.html',
-                    'slides/05-examples.html',
-                    'slides/06-troubleshooting.html',
-                    'slides/07-next-steps.html'
-                ];
-                this.init();
-            }
-
-            init() {
-                this.setupEventListeners();
-                this.updateSlide();
-            }
-
-            setupEventListeners() {
-                document.getElementById('prev-btn').addEventListener('click', () => this.previousSlide());
-                document.getElementById('next-btn').addEventListener('click', () => this.nextSlide());
-
-                // Keyboard navigation
-                document.addEventListener('keydown', (e) => {
-                    switch(e.key) {
-                        case 'ArrowLeft':
-                        case 'ArrowUp':
-                            this.previousSlide();
-                            break;
-                        case 'ArrowRight':
-                        case 'ArrowDown':
-                        case ' ':
-                            this.nextSlide();
-                            break;
-                    }
-                });
-
-                // Indicator clicks
-                document.querySelectorAll('.indicator').forEach(indicator => {
-                    indicator.addEventListener('click', (e) => {
-                        const slideNum = parseInt(e.target.dataset.slide);
-                        this.goToSlide(slideNum);
-                    });
-                });
-            }
-
-            nextSlide() {
-                if (this.currentSlide < this.totalSlides) {
-                    this.currentSlide++;
-                    this.updateSlide();
-                }
-            }
-
-            previousSlide() {
-                if (this.currentSlide > 1) {
-                    this.currentSlide--;
-                    this.updateSlide();
-                }
-            }
-
-            goToSlide(slideNum) {
-                if (slideNum >= 1 && slideNum <= this.totalSlides) {
-                    this.currentSlide = slideNum;
-                    this.updateSlide();
-                }
-            }
-
-            updateSlide() {
-                const iframe = document.getElementById('slide-frame');
-                iframe.src = this.slideFiles[this.currentSlide - 1];
-                
-                // Update counter
-                document.getElementById('slide-counter').textContent = `${this.currentSlide} / ${this.totalSlides}`;
-                
-                // Update navigation buttons
-                document.getElementById('prev-btn').disabled = this.currentSlide === 1;
-                document.getElementById('next-btn').disabled = this.currentSlide === this.totalSlides;
-                
-                // Update indicators
-                document.querySelectorAll('.indicator').forEach((indicator, index) => {
-                    indicator.classList.toggle('active', index + 1 === this.currentSlide);
-                });
-                
-                // Update progress bar
-                const progress = (this.currentSlide / this.totalSlides) * 100;
-                document.querySelector('.progress-fill').style.width = `${progress}%`;
-            }
-        }
-
-        // Initialize when DOM is loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            new SlidePresentation();
-        });
-    </script>
-
-    <style>
-        .slide-container {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        #slide-frame {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .slide-navigation {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            z-index: 1000;
-        }
-
-        #slide-counter {
-            color: white;
-            font-weight: 500;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 8px 16px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-        }
-
-        .slide-indicators {
-            position: fixed;
-            bottom: 80px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 8px;
-            z-index: 1000;
-        }
-
-        .indicator {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .indicator.active {
-            background: white;
-            transform: scale(1.2);
-        }
-
-        .indicator:hover {
-            background: rgba(255, 255, 255, 0.8);
-        }
-
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.2);
-            z-index: 1000;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            transition: width 0.3s ease;
-        }
-    </style>
+    <script src="js/slider.js"></script>
 </body>
 </html>

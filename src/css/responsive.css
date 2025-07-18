@@ -1,186 +1,191 @@
-/* Responsive Design */
+/* Responsive Design for Fullscreen Slider */
 
 /* Extra Large screens (1400px+) */
 @media (min-width: 1400px) {
-    .slide {
-        max-width: 1000px;
-        padding: 100px 80px;
+    .teaser {
+        max-width: 1200px;
+        padding: 3rem;
     }
     
-    .slide-content h1 {
-        font-size: 4rem;
+    .teaser h2 {
+        font-size: 5rem;
     }
     
-    .slide-content h2 {
-        font-size: 2rem;
-    }
-    
-    .slide-content p {
+    .teaser h3 {
         font-size: 1.4rem;
+        min-width: 25rem;
+    }
+    
+    .teaser p {
+        font-size: 1.8rem;
+        min-width: 25rem;
+    }
+    
+    .teaser h4 {
+        font-size: 2.2rem;
+    }
+    
+    .content {
+        max-width: 1000px;
+    }
+    
+    .features ul {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .code-block {
+        font-size: 1rem;
     }
 }
 
 /* Large screens (1200px+) */
 @media (min-width: 1200px) {
-    .slide {
-        max-width: 950px;
-        padding: 90px 70px;
+    .teaser {
+        max-width: 1100px;
     }
     
-    .slide-content h1 {
-        font-size: 3.8rem;
+    .teaser h2 {
+        font-size: 4.5rem;
+    }
+    
+    .teaser h3 {
+        font-size: 1.3rem;
+    }
+    
+    .teaser p {
+        font-size: 1.7rem;
+    }
+    
+    .features ul {
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     }
 }
 
 /* Medium screens (tablets) */
 @media (max-width: 1024px) {
-    .slide {
-        max-width: 700px;
-        padding: 60px 50px;
+    .teaser {
+        width: 95%;
+        padding: 2rem 1.5rem;
     }
     
-    .slide-content h1 {
-        font-size: 3rem;
+    .teaser h2 {
+        font-size: 3.5rem;
     }
     
-    .slide-content h2 {
+    .teaser h3 {
+        font-size: 1.1rem;
+        min-width: 18rem;
+        width: 60%;
+    }
+    
+    .teaser p {
+        font-size: 1.4rem;
+        min-width: 18rem;
+        width: 60%;
+    }
+    
+    .teaser h4 {
         font-size: 1.6rem;
     }
     
-    .slide-content p {
+    .teaser h5 {
         font-size: 1.2rem;
     }
     
-    .slide-content ul {
-        font-size: 1.1rem;
+    .content {
+        max-width: 700px;
     }
     
     .features ul {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+    
+    .problem-list {
         grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .code-block {
+        padding: 1.2rem;
+        font-size: 0.85rem;
+    }
+    
+    button.control_prev,
+    button.control_next {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.3rem;
     }
 }
 
 /* Small tablets and large phones */
 @media (max-width: 768px) {
-    .slide-container {
-        padding: 15px;
+    .teaser {
+        width: 95%;
+        padding: 1.5rem 1rem;
     }
     
-    .slide {
-        max-width: 100%;
-        padding: 50px 40px;
-        border-radius: 20px;
-    }
-    
-    .slide-content h1 {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-    }
-    
-    .slide-content h2 {
-        font-size: 1.4rem;
-        margin-bottom: 2rem;
-    }
-    
-    .slide-content h3 {
-        font-size: 1.3rem;
-    }
-    
-    .slide-content h4 {
-        font-size: 1.2rem;
-    }
-    
-    .slide-content p {
-        font-size: 1.1rem;
+    .teaser h2 {
+        font-size: 2.8rem;
         margin-bottom: 1.5rem;
     }
     
-    .slide-content ul {
+    .teaser h3 {
         font-size: 1rem;
-        max-width: 100%;
+        min-width: 15rem;
+        width: 70%;
+        padding: 0.8rem 0;
     }
     
-    .slide-content li {
-        margin-bottom: 0.8rem;
+    .teaser p {
+        font-size: 1.2rem;
+        min-width: 15rem;
+        width: 70%;
+        padding: 1.2rem 0;
     }
     
-    .code-block {
-        padding: 1.5rem;
-        margin: 2rem 0;
-        border-radius: 12px;
+    .teaser h4 {
+        font-size: 1.4rem;
+        margin: 1.5rem 0 0.8rem 0;
     }
     
-    .code-block pre {
-        font-size: 0.9rem;
-        line-height: 1.5;
+    .teaser h5 {
+        font-size: 1.1rem;
+        margin: 1.2rem 0 0.5rem 0;
+    }
+    
+    .content {
+        max-width: 90%;
+        margin-top: 1.5rem;
+    }
+    
+    .features ul,
+    .content ul {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    .features ul {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
     }
     
     .features li {
         padding: 1.2rem;
     }
     
-    .nav-btn {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-    }
-    
-    #slide-counter {
-        padding: 8px 16px;
-        font-size: 0.85rem;
-    }
-}
-
-/* Mobile phones */
-@media (max-width: 480px) {
-    .slide-container {
-        padding: 10px;
-    }
-    
-    .slide {
-        padding: 40px 30px;
-        border-radius: 16px;
-    }
-    
-    .slide-content h1 {
-        font-size: 2rem;
-        margin-bottom: 0.8rem;
-        line-height: 1.2;
-    }
-    
-    .slide-content h2 {
-        font-size: 1.2rem;
-        margin-bottom: 1.5rem;
-    }
-    
-    .slide-content h3 {
-        font-size: 1.1rem;
-        margin-bottom: 1rem;
-    }
-    
-    .slide-content h4 {
-        font-size: 1rem;
-        margin-bottom: 0.8rem;
-    }
-    
-    .slide-content p {
-        font-size: 1rem;
-        margin-bottom: 1.2rem;
-    }
-    
-    .slide-content ul {
-        font-size: 0.95rem;
-        margin: 1.5rem auto;
-    }
-    
-    .slide-content li {
-        margin-bottom: 0.7rem;
+    .content li {
+        margin-bottom: 0.6rem;
         padding-left: 1.2rem;
+        font-size: 0.95rem;
     }
     
     .code-block {
-        padding: 1.2rem;
-        margin: 1.5rem 0;
-        border-radius: 10px;
+        padding: 1rem;
+        margin: 1.2rem 0;
+        font-size: 0.8rem;
     }
     
     .code-block pre {
@@ -188,250 +193,537 @@
         line-height: 1.4;
     }
     
-    .features li {
-        padding: 1rem;
-        text-align: center;
+    .problem-list {
+        gap: 1rem;
+    }
+    
+    .problem-item {
+        padding: 1.2rem;
+    }
+    
+    .problem-item li {
+        font-size: 0.9rem;
     }
     
     .final-message {
         padding: 1.5rem;
+        margin: 1.5rem 0;
     }
     
-    .note {
-        padding: 0.8rem 1.2rem;
+    .final-message h4 {
+        font-size: 1.6rem;
+    }
+    
+    .final-message p {
+        font-size: 1rem;
+    }
+    
+    button.control_prev,
+    button.control_next {
+        width: 2.2rem;
+        height: 2.2rem;
+        font-size: 1.2rem;
+    }
+    
+    button.control_prev {
+        left: 1rem;
+    }
+    
+    button.control_next {
+        right: 1rem;
+    }
+    
+    .progress {
+        height: 5px;
+    }
+    
+    .progress:hover {
+        height: 7px;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+    .teaser {
+        width: 95%;
+        padding: 1rem 0.8rem;
+    }
+    
+    .teaser h2 {
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+        line-height: 1.1;
+    }
+    
+    .teaser h3 {
+        font-size: 0.9rem;
+        min-width: 12rem;
+        width: 80%;
+        padding: 0.6rem 0;
+        margin-bottom: 1.5rem;
+    }
+    
+    .teaser p {
+        font-size: 1rem;
+        min-width: 12rem;
+        width: 80%;
+        padding: 1rem 0;
+        margin: 1.5rem auto;
+    }
+    
+    .teaser h4 {
+        font-size: 1.2rem;
+        margin: 1.2rem 0 0.6rem 0;
+    }
+    
+    .teaser h5 {
+        font-size: 1rem;
+        margin: 1rem 0 0.4rem 0;
+    }
+    
+    .content {
+        max-width: 95%;
+        margin-top: 1rem;
+    }
+    
+    .features ul,
+    .content ul {
+        font-size: 0.9rem;
+        line-height: 1.5;
         margin: 1rem 0;
     }
     
-    .slide-navigation {
-        bottom: 20px;
-        gap: 0.5rem;
+    .features li {
+        padding: 1rem;
+        border-radius: 8px;
     }
     
-    .nav-btn {
-        padding: 8px 16px;
+    .content li {
+        margin-bottom: 0.5rem;
+        padding-left: 1rem;
         font-size: 0.85rem;
-        border-radius: 40px;
     }
     
-    #slide-counter {
-        padding: 6px 12px;
+    .content li::before {
+        font-size: 1rem;
+    }
+    
+    .code-block {
+        padding: 0.8rem;
+        margin: 1rem 0;
+        border-radius: 8px;
+    }
+    
+    .code-block pre {
+        font-size: 0.7rem;
+        line-height: 1.3;
+    }
+    
+    .problem-list {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+        margin: 1rem 0;
+    }
+    
+    .problem-item {
+        padding: 1rem;
+    }
+    
+    .problem-item h5 {
+        font-size: 0.95rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .problem-item li {
         font-size: 0.8rem;
+        margin-bottom: 0.4rem;
     }
     
-    .slide-indicators {
-        bottom: 70px;
-        gap: 8px;
+    .final-message {
+        padding: 1.2rem;
+        margin: 1.2rem 0;
     }
     
-    .indicator {
-        width: 10px;
-        height: 10px;
+    .final-message h4 {
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .final-message p {
+        font-size: 0.9rem;
+    }
+    
+    button.control_prev,
+    button.control_next {
+        width: 2rem;
+        height: 2rem;
+        font-size: 1rem;
+    }
+    
+    button.control_prev {
+        left: 0.8rem;
+    }
+    
+    button.control_next {
+        right: 0.8rem;
+    }
+    
+    .progress {
+        height: 6px;
+    }
+    
+    .progress:hover {
+        height: 8px;
+    }
+    
+    .actslide::before {
+        width: 40px;
+        height: 2px;
+        top: 15px;
     }
 }
 
 /* Extra small screens */
 @media (max-width: 320px) {
-    .slide {
-        padding: 30px 20px;
+    .teaser {
+        padding: 0.8rem 0.5rem;
     }
     
-    .slide-content h1 {
+    .teaser h2 {
         font-size: 1.8rem;
+        margin-bottom: 0.8rem;
     }
     
-    .slide-content h2 {
-        font-size: 1.1rem;
+    .teaser h3 {
+        font-size: 0.8rem;
+        min-width: 10rem;
+        width: 90%;
+        padding: 0.5rem 0;
     }
     
-    .slide-content p {
-        font-size: 0.95rem;
+    .teaser p {
+        font-size: 0.9rem;
+        min-width: 10rem;
+        width: 90%;
+        padding: 0.8rem 0;
     }
     
-    .slide-content ul {
+    .teaser h4 {
+        font-size: 1rem;
+        margin: 1rem 0 0.5rem 0;
+    }
+    
+    .teaser h5 {
         font-size: 0.9rem;
     }
     
+    .content li {
+        font-size: 0.75rem;
+        padding-left: 0.8rem;
+    }
+    
     .code-block {
-        padding: 1rem;
+        padding: 0.6rem;
     }
     
     .code-block pre {
-        font-size: 0.75rem;
+        font-size: 0.65rem;
+        line-height: 1.2;
+    }
+    
+    .features li,
+    .problem-item {
+        padding: 0.8rem;
+    }
+    
+    .final-message {
+        padding: 1rem;
+    }
+    
+    .final-message h4 {
+        font-size: 1.2rem;
+    }
+    
+    .final-message p {
+        font-size: 0.8rem;
+    }
+    
+    button.control_prev,
+    button.control_next {
+        width: 1.8rem;
+        height: 1.8rem;
+        font-size: 0.9rem;
+    }
+    
+    button.control_prev {
+        left: 0.5rem;
+    }
+    
+    button.control_next {
+        right: 0.5rem;
     }
 }
 
 /* Touch device optimizations */
 @media (hover: none) and (pointer: coarse) {
-    .nav-btn {
-        padding: 12px 24px;
-        font-size: 1rem;
-        min-height: 44px;
+    button.control_prev,
+    button.control_next {
+        width: 3.5rem;
+        height: 3.5rem;
+        font-size: 1.5rem;
+        opacity: 0.9;
     }
     
-    .nav-btn:hover {
-        transform: none;
+    button.control_prev:hover,
+    button.control_next:hover {
+        transform: translateY(-50%);
+        opacity: 1;
     }
     
-    .nav-btn:active {
-        transform: scale(0.98);
-        background: rgba(255, 255, 255, 0.9);
-    }
-    
-    .indicator {
-        width: 16px;
-        height: 16px;
-        min-width: 44px;
-        min-height: 44px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .indicator::after {
-        content: '';
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: currentColor;
+    button.control_prev:active,
+    button.control_next:active {
+        transform: translateY(-50%) scale(0.95);
+        background: rgba(255, 255, 255, 0.6);
     }
     
     .features li:hover {
         transform: none;
+    }
+    
+    .features li:active {
+        transform: scale(0.98);
+    }
+    
+    .progress {
+        height: 8px;
+    }
+    
+    .progress:hover {
+        height: 8px;
     }
 }
 
 /* Landscape orientation on mobile */
 @media (max-width: 768px) and (orientation: landscape) {
-    .slide-container {
-        height: 100vh;
-        padding: 10px;
+    .teaser {
+        padding: 1rem;
     }
     
-    .slide {
-        max-height: 90vh;
-        overflow-y: auto;
-        padding: 30px 40px;
-    }
-    
-    .slide-content h1 {
-        font-size: 2.2rem;
+    .teaser h2 {
+        font-size: 2.5rem;
         margin-bottom: 0.8rem;
     }
     
-    .slide-content h2 {
-        font-size: 1.3rem;
-        margin-bottom: 1.5rem;
+    .teaser h3 {
+        font-size: 0.9rem;
+        padding: 0.5rem 0;
+        margin-bottom: 1rem;
     }
     
-    .slide-navigation {
-        bottom: 10px;
+    .teaser p {
+        font-size: 1.1rem;
+        padding: 0.8rem 0;
+        margin: 1rem auto;
     }
     
-    .slide-indicators {
-        bottom: 60px;
+    .teaser h4 {
+        font-size: 1.2rem;
+        margin: 1rem 0 0.5rem 0;
     }
-}
-
-/* High DPI displays */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    
+    .content {
+        margin-top: 1rem;
+    }
+    
+    .features ul {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 0.8rem;
+    }
+    
+    .features li {
+        padding: 0.8rem;
+    }
+    
+    .code-block {
+        padding: 0.8rem;
+        margin: 1rem 0;
+    }
+    
     .code-block pre {
-        font-size: 0.95rem;
+        font-size: 0.75rem;
     }
     
-    .slide {
-        border-width: 0.5px;
+    .problem-list {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    
+    .final-message {
+        padding: 1rem;
+    }
+    
+    button.control_prev,
+    button.control_next {
+        width: 2rem;
+        height: 2rem;
+        font-size: 1rem;
+    }
+    
+    button.control_prev {
+        left: 0.8rem;
+    }
+    
+    button.control_next {
+        right: 0.8rem;
     }
 }
 
 /* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
-    .slide {
-        animation: none;
-    }
-    
-    .nav-btn,
-    .indicator,
-    .features li {
+    #slider ul {
         transition: none;
     }
     
-    .progress-fill {
+    button.control_prev,
+    button.control_next,
+    .features li,
+    .problem-item {
         transition: none;
     }
     
-    .nav-btn:hover,
-    .indicator:hover,
+    button.control_prev:hover,
+    button.control_next:hover {
+        transform: translateY(-50%);
+    }
+    
     .features li:hover {
         transform: none;
+    }
+    
+    .progress .bar {
+        transition: width 0.1s ease;
     }
 }
 
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
-    .slide {
-        background: rgba(30, 30, 30, 0.95);
-        border-color: rgba(255, 255, 255, 0.1);
+    .shadow {
+        background: rgba(0, 0, 0, 0.5);
     }
     
-    .slide-content h1 {
-        color: #f8fafc;
+    .teaser h2,
+    .teaser h3,
+    .teaser p,
+    .teaser h4,
+    .teaser h5 {
+        color: #fff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
     }
     
-    .slide-content h3,
-    .slide-content ul {
-        color: #e2e8f0;
+    .code-block {
+        background: rgba(0, 0, 0, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.3);
     }
     
-    .slide-content p {
-        color: #cbd5e1;
+    .features li,
+    .problem-item,
+    .final-message {
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.3);
     }
     
-    .nav-btn {
-        background: rgba(30, 30, 30, 0.9);
-        color: #f8fafc;
-        border-color: rgba(255, 255, 255, 0.2);
-    }
-    
-    .nav-btn:hover {
-        background: rgba(30, 30, 30, 0.95);
+    .features li:hover,
+    .problem-item:hover {
+        background: rgba(0, 0, 0, 0.4);
     }
 }
 
 /* Print styles */
 @media print {
     body {
-        background: white;
+        overflow: visible;
+    }
+    
+    #slider {
+        height: auto;
+        overflow: visible;
+    }
+    
+    #slider ul {
+        width: auto;
+        height: auto;
+        overflow: visible;
+    }
+    
+    #slider ul li {
+        width: auto;
+        height: auto;
+        float: none;
+        page-break-inside: avoid;
+        margin-bottom: 2rem;
     }
     
     .slide {
-        background: white;
-        box-shadow: none;
-        border: 1px solid #ccc;
-        page-break-inside: avoid;
-        margin-bottom: 20px;
+        height: auto;
+        background: white !important;
+        color: black !important;
     }
     
-    .slide-navigation,
-    .slide-indicators,
-    .progress-bar {
-        display: none;
+    .shadow {
+        background: none;
+        backdrop-filter: none;
     }
     
-    .slide-content h1 {
-        color: black;
+    .teaser,
+    .teaser h2,
+    .teaser h3,
+    .teaser p,
+    .teaser h4,
+    .teaser h5 {
+        color: black !important;
+        text-shadow: none !important;
     }
     
-    .slide-content h2 {
-        color: #333;
+    .teaser h3,
+    .teaser p {
+        border-color: black !important;
     }
     
     .code-block {
-        background: #f5f5f5;
-        border: 1px solid #ddd;
+        background: #f5f5f5 !important;
+        border: 1px solid #ddd !important;
     }
     
-    .code-block pre {
-        color: #333;
+    .code-block pre,
+    .code-block code {
+        color: #333 !important;
     }
+    
+    .features li,
+    .problem-item,
+    .final-message {
+        background: #f9f9f9 !important;
+        border: 1px solid #ddd !important;
+        color: black !important;
+    }
+    
+    button.control_prev,
+    button.control_next,
+    .progress,
+    .actslide::before {
+        display: none !important;
+    }
+}
+
+/* Paused state styling */
+.progress.paused {
+    opacity: 0.6;
+}
+
+.progress.paused .bar {
+    background: linear-gradient(90deg, #ff6b6b 0%, rgba(255, 107, 107, 0.8) 100%);
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+}
+
+.progress.paused:hover .bar {
+    box-shadow: 0 0 30px rgba(255, 107, 107, 0.8);
 }
